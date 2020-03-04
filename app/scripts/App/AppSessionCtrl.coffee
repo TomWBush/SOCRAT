@@ -30,7 +30,7 @@ module.exports = class AppSessionCtrl extends BaseCtrl
         current_location = current_location.split("#")[0] + "#/" + @pages[input_val]
         window.location.replace(current_location)
     else
-        $('#errmsg').html("Invalid session ID").show().fadeOut("slow")
+        $('#errmsg').html(" Invalid ID").show().fadeOut("slow")
 
   generateID: ->
     current_location = window.location.href.split("#/")[1]
