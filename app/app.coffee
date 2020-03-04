@@ -42,6 +42,7 @@ angular.module 'app_directives', []
 require 'scripts/App/AppCtrl.coffee'
 require 'scripts/App/AppSidebarCtrl.coffee'
 require 'scripts/App/AppMainCtrl.coffee'
+require 'scripts/App/AppSessionCtrl.coffee'
 require 'scripts/App/AppMenubarDirective.coffee'
 require 'scripts/App/AppNotification.directive.coffee'
 require 'scripts/App/filters.coffee'
