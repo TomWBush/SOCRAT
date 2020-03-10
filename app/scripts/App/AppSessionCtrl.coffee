@@ -36,7 +36,7 @@ module.exports = class AppSessionCtrl extends BaseCtrl
     current_location = window.location.href.split("#/")[1]
     for id of @pages
         if @pages[id] == current_location
-            alert(id)
+            alert("Your ID is: \n" + id + "\nUse your ID next time to get directly to this page.")
             return
     alert("Unable to generate ID for current page.")
    
