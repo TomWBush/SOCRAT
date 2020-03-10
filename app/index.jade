@@ -19,8 +19,9 @@
         .navbar-redirect
           div(ng-controller="AppSessionCtrl as sessionCtrl", style="display:inline-flex")
             input#sessionId(type="text", class="form-control input-lg", value="", placeholder="Session id: ")
-            button(ng-click="sessionCtrl.onSessionSubmit()").btn.btn-primary Submit
-            button(ng-click="sessionCtrl.generateID()").btn.btn-primary Generate an ID
+            //- div(class="btn-toolbar")
+            button(ng-click="sessionCtrl.onSessionSubmit()", style="margin-right:4px").btn.btn-warning Submit
+            button(ng-click="sessionCtrl.generateID()").btn.btn-warning Generate an ID
           span#errmsg(style="color:red")
 
   // main content section

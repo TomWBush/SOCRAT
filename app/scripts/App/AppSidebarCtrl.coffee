@@ -43,7 +43,6 @@ module.exports = class AppSidebarCtrl extends BaseCtrl
     @$scope.$emit 'change in view'
 
   getClass: ->
-    # Override the size of col-md-1
     space = document.getElementById("panel-space")
     if @state is 'hidden'
       space.setAttribute("style", "width:4%; height:1%;")
