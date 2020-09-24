@@ -138,9 +138,12 @@ module.exports = class GetParams extends BaseService
     variance = parseFloat(variance.toFixed(2))
     median = parseFloat(median.toFixed(2))
     standardDerivation = parseFloat(standardDerivation.toFixed(2))
+    console.log(mean, variance)
 
-    
-
+    # The following formula for calculating parameters is from:
+    # https://stats.stackexchange.com/questions/12232/calculating-the-parameters-of-a-beta-distribution-using-the-mean-and-variance
+    alpha = ((1 - mean) / variance - 1 / mean) * Math.pow(mean, 2)
+    beta = @Alpha * (1 / mean - 1)
 
     return stats =
       mean: mean
@@ -158,6 +161,8 @@ module.exports = class GetParams extends BaseService
       gamma: 1
       bandwith: 5
       A: mean / (2* Math.sqrt(2/ Math.PI)).toFixed(2)
+      alpha: alpha
+      beta: beta
 
 
 

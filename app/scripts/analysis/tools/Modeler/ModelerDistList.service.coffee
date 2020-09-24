@@ -17,6 +17,15 @@ module.exports = class DistList extends BaseService
       xLabel: "Add x"
 
     ,
+      name: 'Beta'
+      value: 2
+      x: ['integer', 'number']
+      y: false
+      z: false
+      message: "This class models a beta distribution fitting curve to the dataset"
+      xLabel: "Add x"
+
+    ,
       name: 'Maxwell-Boltzman'
       value: 1
       x: ['integer', 'number']

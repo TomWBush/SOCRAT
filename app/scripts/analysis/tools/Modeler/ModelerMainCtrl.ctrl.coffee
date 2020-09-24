@@ -136,10 +136,10 @@ module.exports = class ModelerMainCtrl extends BaseCtrl
   loadData: () ->
     if (@distribution is "Normal")
       @normalRetrieve()
-      return
+    else if (@distribution is "Beta")
+      @BetaRetrieve()
     else if (@distribution is "Laplace")
       @laplaceRetrieve()
-      return
     else if (@distribution is "Cauchy")
       @CauchyRetrieve()
     else if (@distribution is "ChiSquared")
@@ -233,6 +233,15 @@ module.exports = class ModelerMainCtrl extends BaseCtrl
     @NormalSliders()
     @updateModelData()
 
+  
+  BetaRetrieve: ()->
+    @currParams = @router.getParamsByName(@distribution)
+    @Alpha = @currParams.alpha
+    @Beta =   @currParams.beta
+
+    @BetaSliders()
+    @updateModelData()
+
 
   #gets the current values of the distribution parameters
   normalRetrieve: ()->
@@ -317,6 +326,52 @@ module.exports = class ModelerMainCtrl extends BaseCtrl
       for sl in sliders
         sl.slider("enable")
         sl.find('.ui-slider-handle').show()
+
+
+  # Sync Beta Distribution parameters
+  BetaSync: () ->
+    @params.stats.alpha = @Alpha
+    @params.stats.beta = @Beta
+    @syncData(@params)
+    #@loadData()
+
+
+  #handles a user pressing enter instead of using sliders
+  BetaPress: (evt) ->
+    name = evt.target.name
+    key = evt.which or evt.keyCode
+    if key is 13
+      if name is "Beta"
+        @BetaSync()
+
+  # binded to the front end slider
+  BetaSliders: () ->
+    Alpha = $("#Alpha")
+    Beta = $("#Beta")
+
+    Alpha.slider(
+      value: @Alpha,
+      min: 0.01,
+      max: 10,
+      range: "min",
+      step: 0.01,
+      slide: (event, ui) =>
+        console.log(@Alpha, ui.value)
+        @Alpha = ui.value
+        @BetaSync()
+    )
+
+    Beta.slider(
+      value: @Beta,
+      min: 0.01,
+      max: 10,
+      range: "min",
+      step: 0.01,
+      slide: (event, ui) =>
+        console.log(@Beta, ui.value)
+        @Beta = ui.value
+        @BetaSync()
+    )
 
 
 

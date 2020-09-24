@@ -12,6 +12,7 @@ module.exports = modeler = new Module
       'app_analysis_modeler_msgService': require 'scripts/analysis/tools/Modeler/ModelerMsgService.service.coffee'
       'app_analysis_modeler_dataService': require 'scripts/analysis/tools/Modeler/ModelerDataService.service.coffee'
       'socrat_modeler_distribution_normal': require 'scripts/analysis/tools/Modeler/ModelerDistributionNormal.service.coffee'
+      'socrat_modeler_distribution_beta': require 'scripts/analysis/tools/Modeler/ModelerDistributionBeta.service.coffee'
       'socrat_modeler_distribution_laplace': require 'scripts/analysis/tools/Modeler/ModelerDistributionLaplace.service.coffee'
       'socrat_modeler_distribution_cauchy': require 'scripts/analysis/tools/Modeler/ModelerDistributionCauchy.service.coffee'
       'socrat_modeler_distribution_maxwell_boltzman': require 'scripts/analysis/tools/Modeler/ModelerDistributionMaxwellBoltzman.service.coffee'

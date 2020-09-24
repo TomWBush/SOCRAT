@@ -11,6 +11,7 @@ BaseModuleDataService = require 'scripts/BaseClasses/BaseModuleDataService.coffe
 module.exports = class ModelerRouter extends BaseModuleDataService
   @inject 'app_analysis_powerCalc_msgService',
     'socrat_modeler_distribution_normal',
+    'socrat_modeler_distribution_beta',
     'socrat_modeler_distribution_laplace',
     'socrat_modeler_distribution_cauchy',
     'socrat_modeler_distribution_maxwell_boltzman',
@@ -31,6 +32,7 @@ module.exports = class ModelerRouter extends BaseModuleDataService
     #import each distribution file
     @msgManager = @app_analysis_powerCalc_msgService
     @Normal = @socrat_modeler_distribution_normal
+    @Beta = @socrat_modeler_distribution_beta
     @Kernel = @app_analysis_modeler_kernel_density_plotter
     @Laplace = @socrat_modeler_distribution_laplace
     @Cauchy = @socrat_modeler_distribution_cauchy
@@ -47,7 +49,7 @@ module.exports = class ModelerRouter extends BaseModuleDataService
 
     #@models = [@Normal, @Kernel, @Laplace, @Cauchy, @MaxwellBoltzman, @Binomial, @Exponential ]
     #add distribution to the available models list
-    @models = [@Normal, @Laplace, @ChiSquared, @MaxwellBoltzman, @LogNormal, @Cauchy, @Exponential, @Kernel, @Geometric, @Bernoulli, @ContinuousUniform, @DiscreteUniform, @Poisson, @Weibull]
+    @models = [@Normal, @Beta, @Laplace, @ChiSquared, @MaxwellBoltzman, @LogNormal, @Cauchy, @Exponential, @Kernel, @Geometric, @Bernoulli, @ContinuousUniform, @DiscreteUniform, @Poisson, @Weibull]
 
   getNames: -> @models.map (model) -> model.getName()
 
@@ -84,6 +86,5 @@ module.exports = class ModelerRouter extends BaseModuleDataService
           q = model.CDF(x)
           e = Math.abs(q-p)
 
-        
       return x
     
